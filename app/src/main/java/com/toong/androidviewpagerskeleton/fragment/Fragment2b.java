@@ -1,15 +1,16 @@
-package com.toong.androidviewpagerskeleton;
+package com.toong.androidviewpagerskeleton.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.toong.androidviewpagerskeleton.BaseFragment;
+import com.toong.androidviewpagerskeleton.R;
 
-public class Fragment3 extends Fragment {
-    private static String TAG = "Fragment3";
+public class Fragment2b extends BaseFragment {
+    private static String TAG = "Fragment2b";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,7 +21,7 @@ public class Fragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView");
-        View rootView = inflater.inflate(R.layout.fragment_3, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_2b, container, false);
         return rootView;
     }
 

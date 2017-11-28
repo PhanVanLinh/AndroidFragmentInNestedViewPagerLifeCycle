@@ -8,13 +8,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="50sp"
-        android:text="1"
+        android:text="Fragment 1"
         />
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#80ff0000"
-        android:layout_marginTop="50dp"
+    <Button
+        android:id="@+id/button_go_to_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Second Activity"
         />
 </LinearLayout>

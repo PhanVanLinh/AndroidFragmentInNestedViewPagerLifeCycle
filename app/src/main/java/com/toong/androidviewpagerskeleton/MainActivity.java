@@ -6,11 +6,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import com.toong.androidviewpagerskeleton.fragment.Fragment1;
+import com.toong.androidviewpagerskeleton.fragment.Fragment2;
+import com.toong.androidviewpagerskeleton.fragment.Fragment3;
+import com.toong.androidviewpagerskeleton.fragment.Fragment4;
+import com.toong.androidviewpagerskeleton.fragment.Fragment5;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-     ViewPager mPager;
+    public ViewPager mPager;
 
      PagerAdapter mPagerAdapter;
 
@@ -23,11 +28,13 @@ public class MainActivity extends AppCompatActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
 
-        mPagerAdapter.addFragment(new Fragment0());
         mPagerAdapter.addFragment(new Fragment1());
         mPagerAdapter.addFragment(new Fragment2());
         mPagerAdapter.addFragment(new Fragment3());
+        mPagerAdapter.addFragment(new Fragment4());
+        mPagerAdapter.addFragment(new Fragment5());
 
+        mPager.setOffscreenPageLimit(mPagerAdapter.getCount());
         mPager.setAdapter(mPagerAdapter);
 
     }

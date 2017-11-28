@@ -1,4 +1,4 @@
-package com.toong.androidviewpagerskeleton;
+package com.toong.androidviewpagerskeleton.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,11 +10,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.toong.androidviewpagerskeleton.BaseFragment;
+import com.toong.androidviewpagerskeleton.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fragment1 extends Fragment {
-    private static String TAG = "Fragment1";
+public class Fragment2 extends BaseFragment {
+    private static String TAG = "Fragment2";
     ViewPager mPager;
     PagerAdapter mPagerAdapter;
 
@@ -27,32 +29,34 @@ public class Fragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         Log.i(TAG, "onCreateView");
-        View rootView = inflater.inflate(R.layout.fragment_1, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_2, container, false);
 
-        // Instantiate a ViewPager and a PagerAdapter.
-        mPager = (ViewPager) rootView.findViewById(R.id.pager);
+        mPager = rootView.findViewById(R.id.pager);
         mPagerAdapter = new PagerAdapter(getChildFragmentManager());
 
-        mPagerAdapter.addFragment(new Fragment1a());
-        mPagerAdapter.addFragment(new Fragment1b());
-        mPagerAdapter.addFragment(new Fragment1c());
-
-        mPager.setAdapter(mPagerAdapter);
+        //        initPager();
         return rootView;
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        Log.i(TAG, "setUserVisibleHint " + isVisibleToUser + " - " + isResumed());
+        if (mPagerAdapter == null) {
+            return;
+        }
+        if (mPagerAdapter.getCount() == 0) {
+            initPager();
+            return;
+        }
         Fragment selectedFragment = mPagerAdapter.getItem(mPager.getCurrentItem());
         if (selectedFragment == null || !selectedFragment.isResumed()) {
             return;
         }
-        if (selectedFragment instanceof Fragment1a) {
+        if (selectedFragment instanceof Fragment2a) {
 
         }
-        if (selectedFragment instanceof Fragment1b) {
+        if (selectedFragment instanceof Fragment2b) {
+
         }
     }
 
@@ -68,6 +72,16 @@ public class Fragment1 extends Fragment {
         Log.i(TAG, "onDestroyView");
     }
 
+    /**
+     * Test init pager when fragment created or when fragment visible
+     */
+    private void initPager() {
+        mPagerAdapter.addFragment(new Fragment2a());
+        mPagerAdapter.addFragment(new Fragment2b());
+        mPagerAdapter.addFragment(new Fragment2c());
+
+        mPager.setAdapter(mPagerAdapter);
+    }
 
     private class PagerAdapter extends FragmentStatePagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
